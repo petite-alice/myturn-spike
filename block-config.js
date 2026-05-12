@@ -54,31 +54,79 @@ const CLICBOT_TOOLBOX = [
 const LEGO_SPIKE_TOOLBOX = [
   {
     "kind":"category",
-    "name":"Lego Spike",
+    "name":"Does Spike do something multiple times?",
     "categorystyle":"math_category",
     "contents":[
       { 
         "kind":"block",
         "type":"controls_if"
       },
-      {
+    ]
+  },
+  {
+    "kind":"category",
+    "name":"Does Spike wait to do something?",
+    "categorystyle":"math_category",
+    "contents":[
+      { 
         "kind":"block",
-        "type":"controls_repeat_ext",
-        "inputs":{
-          "TIMES":{
-            "block":{
-              "type":"math_number",
-              "fields":{
-                "NUM":40
-              }
-            }
-          }
-        }
-      },
-      {
-        "kind":"block",
-        "type":"spike_run_motor"
+        "type":"controls_if"
       }
+    ]
+  },
+  {
+    "kind":"category",
+    "name":"Does Spike make sound",
+    "categorystyle":"math_category",
+    "contents":[
+      { 
+        "kind":"block",
+        "type":"controls_if"
+      },
+    ]
+  },
+  {
+    "kind":"category",
+    "name":"Does Spike display a drawing or light up?",
+    "categorystyle":"math_category",
+    "contents":[
+      { 
+        "kind":"block",
+        "type":"controls_if"
+      },
+    ]
+  },
+  {
+    "kind":"category",
+    "name":"Does Spike rotate or move?",
+    "categorystyle":"math_category",
+    "contents":[
+      { 
+        "kind":"block",
+        "type":"controls_if"
+      },
+    ]
+  },
+  {
+    "kind":"category",
+    "name":"Does Spike use one of its sensors?",
+    "categorystyle":"math_category",
+    "contents":[
+      { 
+        "kind":"block",
+        "type":"controls_if"
+      },
+    ]
+  },
+  {
+    "kind":"category",
+    "name":"Operators",
+    "categorystyle":"math_category",
+    "contents":[
+      { 
+        "kind":"block",
+        "type":"controls_if"
+      },
     ]
   }
 ];
@@ -89,7 +137,7 @@ const BASE_BLOCKLY_TOOLBOX = {
   "contents":[
     {
       "kind":"category",
-      "name":"If/Else",
+      "name":"Delete Later - If/Else",
       "categorystyle":"logic_category",
       "contents":[
         {
@@ -115,7 +163,7 @@ const BASE_BLOCKLY_TOOLBOX = {
     },
     {
       "kind":"category",
-      "name":"Logic",
+      "name":"Delete Later - Logic",
       "categorystyle":"logic_category",
       "contents":[
         {
@@ -146,7 +194,7 @@ const BASE_BLOCKLY_TOOLBOX = {
     },
     {
       "kind":"category",
-      "name":"Loops",
+      "name":"Delete Later - Loops",
       "categorystyle":"loop_category",
       "contents":[
         {
@@ -212,7 +260,7 @@ const BASE_BLOCKLY_TOOLBOX = {
     },
     {
       "kind":"category",
-      "name":"Math",
+      "name":"Delete Later - Math",
       "categorystyle":"math_category",
       "contents":[
         {
@@ -333,7 +381,7 @@ const BASE_BLOCKLY_TOOLBOX = {
     },
     {
       "kind":"category",
-      "name":"Lists",
+      "name":"Delete Later - Lists",
       "categorystyle":"list_category",
       "contents":[
         {
@@ -399,24 +447,24 @@ const BASE_BLOCKLY_TOOLBOX = {
     },
     {
       "kind":"category",
-      "name":"Variables",
+      "name":"Delete Later - Variables",
       "categorystyle":"variable_category",
       "custom":"VARIABLE"
     },
     {
       "kind":"category",
-      "name":"Functions",
+      "name":"Delete Later - Functions",
       "categorystyle":"procedure_category",
       "custom":"PROCEDURE"
     },
     {
       "kind":"category",
-      "name":"Library",
+      "name":"Delete Later - Library",
       "expanded":"true",
       "contents":[
         {
           "kind":"category",
-          "name":"Randomize",
+          "name":"Delete Later - Randomize",
           "contents":[
             {
               "kind":"block",
@@ -687,7 +735,7 @@ const BASE_BLOCKLY_TOOLBOX = {
         },
         {
           "kind":"category",
-          "name":"Jabberwocky",
+          "name":"Delete Later - Jabberwocky",
           "contents":[
             {
               "kind":"block",
@@ -895,6 +943,16 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "tooltip": "Run a LEGO Spike motor",
     "helpUrl": ""
   }
+];
+
+// Tool box 
+const LEGO_SPIKE_DEFINITIONS = [
+
+
+
+
+
+
 ];
 
 //
