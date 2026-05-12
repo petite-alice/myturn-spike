@@ -55,12 +55,31 @@ const LEGO_SPIKE_TOOLBOX = [
   {
     "kind":"category",
     "name":"Does Spike do something multiple times?",
-    "categorystyle":"math_category",
-    "contents":[
-      { 
-        "kind":"block",
-        "type":"controls_if"
+    "categorystyle":"loop_category",
+    "contents": [
+      {
+        "kind": "block",
+        "type": "controls_repeat_ext"
       },
+      {
+        "kind": "block",
+        "type": "controls_whileUntil"
+      },
+      {
+        "kind": "block",
+        "type": "controls_for",
+        "fields": {
+          "VAR": "i"
+        }
+      },
+      {
+        "kind": "block",
+        "type": "controls_forEach"
+      },
+      {
+        "kind": "block",
+        "type": "controls_flow_statements"
+      }
     ]
   },
   {
@@ -68,10 +87,25 @@ const LEGO_SPIKE_TOOLBOX = [
     "name":"Does Spike wait to do something?",
     "categorystyle":"math_category",
     "contents":[
-      { 
-        "kind":"block",
-        "type":"controls_if"
-      }
+        {
+          "kind":"block",
+          "type":"controls_if"
+        },
+        {
+          "kind":"block",
+          "type":"controls_if",
+          "extraState":{
+            "hasElse":"true"
+          }
+        },
+        {
+          "kind":"block",
+          "type":"controls_if",
+          "extraState":{
+            "hasElse":"true",
+            "elseIfCount":1
+          }
+        }
     ]
   },
   {
@@ -120,7 +154,7 @@ const LEGO_SPIKE_TOOLBOX = [
   },
   {
     "kind":"category",
-    "name":"Operators",
+    "name":"Does Spike compare or combine values?",
     "categorystyle":"math_category",
     "contents":[
       { 
