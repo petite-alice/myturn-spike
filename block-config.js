@@ -154,13 +154,97 @@ const LEGO_SPIKE_TOOLBOX = [
   },
   {
     "kind":"category",
-    "name":"Does Spike compare or combine values?",
-    "categorystyle":"math_category",
+    "name":"Does Spike compare or use values?",
+    "categorystyle":"variable_category", // Just to change color, they are not all variables
     "contents":[
-      { 
+      {
         "kind":"block",
-        "type":"controls_if"
+        "type":"logic_compare"
       },
+      {
+        "kind":"block",
+        "type":"logic_operation"
+      },
+      {
+        "kind":"block",
+        "type":"logic_boolean"
+      },
+      {
+        "kind":"block",
+        "type":"math_number",
+        "fields":{
+          "NUM":123
+        }
+      },
+      {
+        "kind":"block",
+        "type":"math_arithmetic",
+        "fields":{
+          "OP":"ADD"
+        }
+      },
+      {
+        "kind":"block",
+        "type":"math_single",
+        "fields":{
+          "OP":"ROOT"
+        }
+      },
+      {
+        "kind":"block",
+        "type":"math_trig",
+        "fields":{
+          "OP":"SIN"
+        }
+      },
+      {
+        "kind":"block",
+        "type":"math_constant",
+        "fields":{
+          "CONSTANT":"PI"
+        }
+      },
+      {
+        "kind":"block",
+        "type":"math_number_property",
+        "extraState":"<mutation divisor_input=\"false\"></mutation>",
+        "fields":{
+          "PROPERTY":"EVEN"
+        }
+      },
+      {
+        "kind":"block",
+        "type":"math_round",
+        "fields":{
+          "OP":"ROUND"
+        }
+      },
+      {
+        "kind":"block",
+        "type":"math_modulo"
+      },
+      {
+        "kind":"block",
+        "type":"math_random_int",
+        "inputs":{
+          "FROM":{
+            "block":{
+              "type":"math_number",
+              "fields":{
+                "NUM":1
+              }
+            }
+          },
+          "TO":{
+            "block":{
+              "type":"math_number",
+              "fields":{
+                "NUM":100
+              }
+            }
+          }
+        }
+      }
     ]
   }
 ];
