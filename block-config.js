@@ -945,15 +945,6 @@ const CUSTOM_BLOCK_DEFINITIONS = [
   }
 ];
 
-// Tool box 
-const LEGO_SPIKE_DEFINITIONS = [
-
-
-
-
-
-
-];
 
 //
 // Categories from the original application. 
