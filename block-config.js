@@ -57,7 +57,7 @@ const LEGO_SPIKE_TOOLBOX = [
     "name":"Lego Spike",
     "categorystyle":"math_category",
     "contents":[
-      {
+      { 
         "kind":"block",
         "type":"controls_if"
       },
@@ -74,6 +74,10 @@ const LEGO_SPIKE_TOOLBOX = [
             }
           }
         }
+      },
+      {
+        "kind":"block",
+        "type":"spike_run_motor"
       }
     ]
   }
@@ -812,6 +816,7 @@ const BASE_BLOCKLY_TOOLBOX = {
 
 const CUSTOM_BLOCK_DEFINITIONS = [
   {
+    // ClicBot example block
     "type": "clicbot_move_wheel",
     "message0": "Wheel %1 %2 %3 %4 rounds/minute",
     "args0": [
@@ -840,12 +845,64 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "colour": 180,
     "tooltip": "",
     "helpUrl": ""
+  },
+
+  // Spike example block
+  {
+    "type": "spike_run_motor",
+    "message0": "Motor %1 run %2 for %3 %4",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "MOTOR",
+        "options": [
+          ["A", "A"],
+          ["B", "B"],
+          ["C", "C"],
+          ["D", "D"],
+          ["E", "E"],
+          ["F", "F"]
+        ]
+      },
+      {
+        "type": "field_dropdown",
+        "name": "DIRECTION",
+        "options": [
+          ["clockwise", "CLOCKWISE"],
+          ["counter-clockwise", "COUNTERCLOCKWISE"]
+        ]
+      },
+      {
+        "type": "field_number",
+        "name": "AMOUNT",
+        "value": 1,
+        "min": 0,
+        "max": 999
+      },
+      {
+        "type": "field_dropdown",
+        "name": "UNIT",
+        "options": [
+          ["rotations", "ROTATIONS"],
+          ["degrees", "DEGREES"],
+          ["seconds", "SECONDS"]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 180,
+    "tooltip": "Run a LEGO Spike motor",
+    "helpUrl": ""
   }
 ];
 
+//
 // Categories from the original application. 
 // Could be used for reference in building out the new toolbox
 // There are visual examples of these blocks in assets/blocks/
+//
+//  ---------------------------------- ClicBot ---------------------------------- 
 //
 // [{
 //     'name': 'Does ClicBot do something multiple times?',
@@ -882,6 +939,39 @@ const CUSTOM_BLOCK_DEFINITIONS = [
 //   {
 //     'name': 'Does ClicBot use one of its sensors?',
 //     'items': ['gesture.png', 'gesture-obs.png', 'touch.png', 'touch-brain.png', 'distance.png']
+//   },
+//   {
+//     'name': 'Operators',
+//     'items': ['and.png', 'or.png', 'not.png', 'empty.png']
+//   }
+// ];
+//
+// ---------------------------------- Spike ---------------------------------- 
+//
+// [{
+//     'name': 'Does Spike do something multiple times?',
+//     'items': ['loop.png', 'loop-until.png', 'while-do.png', 'loop-for-times.png']
+//   },
+//   {
+//     'name': 'Does Spike wait to do something??',
+//     'items': ['if-do.png', 'delay-for-ms.png', 'delay-until.png']
+//   },
+//   {
+//     'name': 'Does Spike make sound?',
+//     'items': ['play.png', 'play-end.png', 'start-play.png', 'start-play-end.png']
+//   },
+//   {
+//     'name': 'Does Spike display drawing or light up?',
+//     'items': ['screen-displays-drawing.png']
+//     'items': ['screen-change-brightness.png']
+//   },
+//   {
+//     'name': 'Does Spike rotate or move?',
+//     'items': ['motor-rotate.png', 'motor-rotate-end.png', 'motor-rotate-speed.png']
+//   },
+//   {
+//     'name': 'Does Spike use one of its sensors?',
+//     'items': ['distance.png', 'color.png', 'force.png', 'gyro.png']
 //   },
 //   {
 //     'name': 'Operators',
