@@ -1,0 +1,141 @@
+:root {
+    --nav-color: #3459e6;
+    
+    --table-max-width: 2000px;
+    --row-height: 250px;
+    --row-img-height: 200px;
+    --row-text-height: 182px;
+    
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+}
+
+#add-step-btn {
+    cursor: pointer;
+}
+
+.step-nav {
+    margin-top: 20px;
+    width: 200px;
+}
+.nav-cell {
+    font-size: 38px;
+    text-align: center;
+}
+
+.nav-cell:hover {    
+    cursor: pointer;
+    background-color: lightblue;
+}
+
+/* ----------------------------- */
+/* Steps */
+
+.step-table {
+    max-width: var(--table-max-width);
+    width: 90%;
+    margin: 30px auto 0 auto;
+}
+
+.step-row {
+    margin: 0 0 10px 0;
+    border-color: none !important;
+    background-color: #F4F4F4;
+    padding: 0px 0px 0px 0px !important;
+}
+
+.step-cell {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+}
+
+.step-img {
+    width: auto;
+    height: 600px;
+    max-width: 100%;
+}
+
+.step-text {
+    width: 100%;
+    height: 200px;
+    resize: none;
+}
+
+.step-gear {
+    font-size: 42px;
+    cursor: pointer;
+}
+.step-gear:hover {
+    font-size: 46px;
+    font-weight: bold;
+}
+
+@media (min-width: 992px) {
+    .step-row {
+        height: var(--row-height);
+    }
+    .step-img {
+        width: auto;
+        height: var(--row-img-height);
+    }
+    .step-text {
+        width: 100%;
+        height: var(--row-text-height);
+    }
+}
+
+/* ----------------------------- */
+/* Code Editor */
+
+.code-row {
+    height: 600px;
+    background-color: none;
+    margin: -6px 10px 10px 10px
+}
+.blockly-editor {
+    height: 550px; 
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ----------------------------- */
+/* Projects */
+
+#add-project {
+    height: 40px;
+    width: 140px;
+}
+#add-project:hover {    
+    cursor: pointer;
+    background-color: lightblue;
+}
+.project-plus {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ----------------------------- */
+/* Admin Page */
+
+.admin-h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.admin-legends {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.admin-fieldset {
+    margin-bottom: 8px;
+}
+
+#admin-add-project-name {
+    height: 36px;
+    width: 300px;
+}
