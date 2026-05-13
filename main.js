@@ -1,11 +1,27 @@
 // Page Initialization
 ////////////////////////////////////
+window.onerror = function (msg, url, line, col, err) {
+  console.log("GLOBAL ERROR:", msg, line, col, err);
+};
 
-$(document).ready(initialize);
 
-async function initialize($) {
+$(document).ready(function () {
+    initialize();
+});
+
+async function initialize() {
     // Init the db. Define indexed fields only. 
     // Use MODEL object defined in constants section below to access full schema
+
+  if (typeof connectSPIKE === 'function') {
+    $('#connect-spike-btn').on('click', connectSPIKE);
+  } else {
+    console.warn("SPIKE connect function not loaded");
+    $('#connect-spike-btn').on('click', () => {
+      alert("SPIKE connection module not loaded");
+    });
+  }
+
     app.db = new Dexie('myturn2');
     app.db.version(4).stores({
         projects: '++id',
@@ -37,7 +53,9 @@ async function initialize($) {
     });
 
     // Load any custom Blockly block definitions (from block-config.js)
-    Blockly.defineBlocksWithJsonArray(CUSTOM_BLOCK_DEFINITIONS);
+    if (window.Blockly && typeof CUSTOM_BLOCK_DEFINITIONS !== 'undefined') {
+      Blockly.defineBlocksWithJsonArray(CUSTOM_BLOCK_DEFINITIONS);
+    }
 }
 
 // Navigation
@@ -204,7 +222,13 @@ function renderProjectDropdown() {
 }
 
 function renderCurrentProject() {
-  if (app.currentProject[MODEL.PROJECT.ERRORS] && app.currentProject[MODEL.PROJECT.ERRORS].length > 0) {    
+  if (!app.currentProject) return;
+
+  const hasErrors =
+    app.currentProject[MODEL.PROJECT.ERRORS] &&
+    app.currentProject[MODEL.PROJECT.ERRORS].length > 0;
+
+  if (hasErrors) {
     $('#project-error').html(renderErrorContent());
     showSection(SECTION_APP, SECTIONS[SECTION_APP].ERROR);
   } else {
@@ -234,21 +258,22 @@ function renderProgressNav() {
 
   if (app.currentSteps.length > 0) {
     $('#step-nav-bottom').show();
-    locations = locations.concat('bottom');
+    locations = locations.concat(NAV_BOTTOM);
   } else {
     $('#step-nav-bottom').hide();
   }
-  
+
   const prog = progressDetails(app.currentProject);
   const showLeft = (prog.progress > 0 && ALLOW_BACKWARDS);
-  const showRight = (prog.progression && (prog.progress < prog.progression.length-1));
-  
-  const content = {
-    left: showLeft ? '<i class="progress-left bi-arrow-left"></i>' : '',
-    add: `<i class="progress-step-add bi-plus" data-nav-location="${location}"></i>`,
-    right: showRight ? '<i class="progress-right bi-arrow-right"></i>' : ''
-  };
-  locations.forEach(location => {    
+  const showRight = (prog.progression && (prog.progress < prog.progression.length - 1));
+
+  locations.forEach(location => {
+    const content = {
+      left: showLeft ? '<i class="progress-left bi-arrow-left"></i>' : '',
+      add: `<i class="progress-step-add bi-plus" data-nav-location="${location}"></i>`,
+      right: showRight ? '<i class="progress-right bi-arrow-right"></i>' : ''
+    };
+
     $(`#step-nav-${location}`).html(`
       <div class="row align-items-center">
         <div class="nav-cell rounded col-4">${content.left}</div>
@@ -258,17 +283,19 @@ function renderProgressNav() {
     `);
   });
 
-  $('.progress-left').on('click', event => {
-    updateProgress(progressDetails(app.currentProject).progress-1);
+  $('.progress-left').on('click', () => {
+    updateProgress(progressDetails(app.currentProject).progress - 1);
   });
-  $('.progress-right').on('click', event => {
-    updateProgress(progressDetails(app.currentProject).progress+1);
+
+  $('.progress-right').on('click', () => {
+    updateProgress(progressDetails(app.currentProject).progress + 1);
   });
+
   $('.progress-step-add').on('click', event => {
     const location = $(event.target).data('nav-location');
     const newIndex = (location === NAV_TOP) ? 0 : null;
     addStep(app.currentProject[MODEL.PROJECT.ID], newIndex, true);
-  });    
+  });
 }
 
 // Steps
@@ -631,6 +658,14 @@ function displayableColumns() {
 
 // Blockly
 ////////////////////////////////////
+function rebuildToolbox(stepId) {
+  const editor = app.blocklyEditors[stepId];
+  if (!editor || !app.currentProject) return;
+
+  const newToolbox = toolboxForProject(app.currentProject);
+
+  editor.updateToolbox(newToolbox);
+}
 
 function toggleCodeRow(requestedStepId) {
     const stepId = parseInt(requestedStepId);
@@ -659,9 +694,14 @@ function toggleCodeRow(requestedStepId) {
         $(content).insertAfter(stepRow);
 
         const editor = Blockly.inject(blocklyDiv, {
-            toolbox: toolboxForProject(app.currentProject),
-            scrollbars: false,
+          toolbox: toolboxForProject(app.currentProject),
+          scrollbars: false,
         });
+      
+        // force latest block-config toolbox every time editor opens
+        setTimeout(() => {
+          editor.updateToolbox(toolboxForProject(app.currentProject));
+        }, 0);
         editor.addChangeListener(event => {codeChanged(stepId, event)});      
         app.blocklyEditors[stepId] = editor;
 
@@ -700,8 +740,8 @@ function saveCodeEditor(stepId) {
 }
 
 function toolboxForProject(project) {
-  // toolboxForRobot lives in 'block_config.js' along with all the toolbox config json
-  return toolboxForRobot(project[MODEL.PROJECT.ROBOT]);
+  const robotName = project?.[MODEL.PROJECT.ROBOT];
+  return toolboxForRobot(robotName);
 }
 
 // Utility Functions
@@ -832,3 +872,47 @@ const SECTIONS = {
     ERROR: 'project-error'
   }
 };
+
+async function runStep(step) {
+  const blockly = step[MODEL.STEP.BLOCKLY];
+  if (!blockly) return;
+
+  const workspace = Blockly.serialization.workspaces.load(blockly);
+
+  const topBlocks = workspace.getTopBlocks(true);
+
+  for (const block of topBlocks) {
+    await executeBlock(block);
+  }
+}
+
+async function executeBlock(block) {
+  if (!block) return;
+
+  switch (block.type) {
+
+    case "spike_run_motor":
+      await runMotor(block);
+      break;
+
+    default:
+      console.log("Unsupported block:", block.type);
+  }
+
+  const next = block.getNextBlock();
+  if (next) {
+    await executeBlock(next);
+  }
+}
+
+async function runMotor(block) {
+  const command = {
+    type: "motor",
+    motor: block.getFieldValue("MOTOR"),
+    direction: block.getFieldValue("DIRECTION"),
+    amount: Number(block.getFieldValue("AMOUNT")),
+    unit: block.getFieldValue("UNIT")
+  };
+
+  await SPIKE.send(command);
+}
