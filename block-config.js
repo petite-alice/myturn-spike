@@ -113,17 +113,50 @@ const LEGO_SPIKE_TOOLBOX = [
     "name":"Does Spike make sound",
     "categorystyle":"math_category",
     "contents": [
-      {"kind":"block","type":"sound_play_until_done"},
-      {"kind":"block","type":"sound_start"},
-      {"kind":"block","type":"sound_play_beep"},
-      {"kind":"block","type":"sound_start_beep"},
-      {"kind":"block","type":"sound_stop_all"},
-      {"kind":"block","type":"sound_change_effect"},
-      {"kind":"block","type":"sound_set_effect"},
-      {"kind":"block","type":"sound_clear_effects"},
-      {"kind":"block","type":"sound_change_volume"},
-      {"kind":"block","type":"sound_set_volume"},
-      {"kind":"block","type":"sound_volume"}
+      {
+        "kind": "block",
+        "type": "sound_play_until_done"
+      },
+      {
+        "kind": "block",
+        "type": "sound_start"
+      },
+      {
+        "kind": "block",
+        "type": "sound_play_beep"
+      },
+      {
+        "kind": "block",
+        "type": "sound_start_beep"
+      },
+      {
+        "kind": "block",
+        "type": "sound_stop_all"
+      },
+      {
+        "kind": "block",
+        "type": "sound_change_effect"
+      },
+      {
+        "kind": "block",
+        "type": "sound_set_effect"
+      },
+      {
+        "kind": "block",
+        "type": "sound_clear_effects"
+      },
+      {
+        "kind": "block",
+        "type": "sound_change_volume"
+      },
+      {
+        "kind": "block",
+        "type": "sound_set_volume"
+      },
+      {
+        "kind": "block",
+        "type": "sound_volume"
+      }
     ]
   },
   {
@@ -138,42 +171,14 @@ const LEGO_SPIKE_TOOLBOX = [
     ]
   },
   {
-    "kind": "category",
-    "name": "Does Spike rotate or move?",
-    "categorystyle": "math_category",
-    "contents": [
-      {
-        "kind": "block",
-        "type": "movement_move_for"
+    "kind":"category",
+    "name":"Does Spike rotate or move?",
+    "categorystyle":"math_category",
+    "contents":[
+      { 
+        "kind":"block",
+        "type":"controls_if"
       },
-      {
-        "kind": "block",
-        "type": "movement_start_moving"
-      },
-      {
-        "kind": "block",
-        "type": "movement_move_steering_for"
-      },
-      {
-        "kind": "block",
-        "type": "movement_start_moving_steering"
-      },
-      {
-        "kind": "block",
-        "type": "movement_stop_moving"
-      },
-      {
-        "kind": "block",
-        "type": "movement_set_speed"
-      },
-      {
-        "kind": "block",
-        "type": "movement_set_motors"
-      },
-      {
-        "kind": "block",
-        "type": "movement_set_motor_rotation"
-      }
     ]
   },
   {
@@ -181,22 +186,10 @@ const LEGO_SPIKE_TOOLBOX = [
     "name":"Does Spike use one of its sensors?",
     "categorystyle":"math_category",
     "contents":[
-      {"kind":"block","type":"sensor_is_color"},
-      {"kind":"block","type":"sensor_reflection_compare"},
-      {"kind":"block","type":"sensor_pressure_state"},
-      {"kind":"block","type":"sensor_distance_compare"},
-      {"kind":"block","type":"sensor_tilt"},
-      {"kind":"block","type":"sensor_side_up"},
-      {"kind":"block","type":"sensor_motion"},
-      {"kind":"block","type":"sensor_button"},
-      {"kind":"block","type":"sensor_color_value"},
-      {"kind":"block","type":"sensor_reflection_value"},
-      {"kind":"block","type":"sensor_pressure_value"},
-      {"kind":"block","type":"sensor_distance_value"},
-      {"kind":"block","type":"sensor_angle"},
-      {"kind":"block","type":"sensor_timer"},
-      {"kind":"block","type":"sensor_set_yaw_zero"},
-      {"kind":"block","type":"sensor_reset_timer"}
+      { 
+        "kind":"block",
+        "type":"controls_if"
+      },
     ]
   },
   {
@@ -1251,602 +1244,9 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "message0": "volume",
     "output": "Number",
     "colour": 290
-  },
-
-<<<<<<< HEAD
-  // Does spike use one of it's sensors?
-
-  // Color Sensor
-  {
-    "type": "sensor_is_color",
-    "message0": "Sensor %1 color is %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "COLOR",
-        "options": [
-          ["red","RED"],["orange","ORANGE"],["yellow","YELLOW"],
-          ["green","GREEN"],["blue","BLUE"],["purple","PURPLE"],
-          ["black","BLACK"],["white","WHITE"],["pink","PINK"],["brown","BROWN"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 20,
-    "tooltip": "Color sensor"
-  },
-
-  {
-    "type": "sensor_reflection_compare",
-    "message0": "Sensor %1 reflection %2 %3 %",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "OP",
-        "options": [["<","LT"],["=","EQ"],[">","GT"]]
-      },
-      {
-        "type": "field_number",
-        "name": "VALUE",
-=======
-  // Does Spike rotate or move?
-  {
-    "type": "movement_move_for",
-    "message0": "%1 move %2 for %3 %4",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "assets/blocks/movement-wheel-icon.png",
-        "width": 24,
-        "height": 24,
-        "alt": "move"
-      },
-      {
-        "type": "field_dropdown",
-        "name": "DIRECTION",
-        "options": [
-          ["forward", "FORWARD"],
-          ["backward", "BACKWARD"]
-        ]
-      },
-      {
-        "type": "field_number",
-        "name": "AMOUNT",
-        "value": 10,
-        "min": 0
-      },
-      {
-        "type": "field_dropdown",
-        "name": "UNIT",
-        "options": [
-          ["rotations", "ROTATIONS"],
-          ["degrees", "DEGREES"],
-          ["seconds", "SECONDS"],
-          ["cm", "CM"],
-          ["inches", "INCHES"]
-        ]
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 330,
-    "tooltip": "Move Spike forward or backward for a set amount.",
-    "helpUrl": ""
-  },
-
-  {
-    "type": "movement_start_moving",
-    "message0": "%1 start moving %2",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "assets/blocks/movement-wheel-icon.png",
-        "width": 24,
-        "height": 24,
-        "alt": "start moving"
-      },
-      {
-        "type": "field_dropdown",
-        "name": "DIRECTION",
-        "options": [
-          ["forward", "FORWARD"],
-          ["backward", "BACKWARD"]
-        ]
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 330,
-    "tooltip": "Start moving Spike forward or backward.",
-    "helpUrl": ""
-  },
-
-  {
-    "type": "movement_move_steering_for",
-    "message0": "%1 move steering %2 for %3 %4",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "assets/blocks/movement-wheel-icon.png",
-        "width": 24,
-        "height": 24,
-        "alt": "move steering"
-      },
-      {
-        "type": "field_number",
-        "name": "STEERING",
-        "value": 30,
-        "min": -100,
-        "max": 100
-      },
-      {
-        "type": "field_number",
-        "name": "AMOUNT",
-        "value": 10,
-        "min": 0
-      },
-      {
-        "type": "field_dropdown",
-        "name": "UNIT",
-        "options": [
-          ["rotations", "ROTATIONS"],
-          ["degrees", "DEGREES"],
-          ["seconds", "SECONDS"],
-          ["cm", "CM"],
-          ["inches", "INCHES"]
-        ]
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 330,
-    "tooltip": "Move Spike with steering for a set amount.",
-    "helpUrl": ""
-  },
-
-  {
-    "type": "movement_start_moving_steering",
-    "message0": "%1 start moving steering %2",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "assets/blocks/movement-wheel-icon.png",
-        "width": 24,
-        "height": 24,
-        "alt": "start moving steering"
-      },
-      {
-        "type": "field_number",
-        "name": "STEERING",
-        "value": 30,
-        "min": -100,
-        "max": 100
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 330,
-    "tooltip": "Start moving Spike with steering.",
-    "helpUrl": ""
-  },
-
-  {
-    "type": "movement_stop_moving",
-    "message0": "%1 stop moving",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "assets/blocks/movement-wheel-icon.png",
-        "width": 24,
-        "height": 24,
-        "alt": "stop moving"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 330,
-    "tooltip": "Stop Spike movement.",
-    "helpUrl": ""
-  },
-
-  {
-    "type": "movement_set_speed",
-    "message0": "%1 set movement speed to %2 %",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "assets/blocks/movement-wheel-icon.png",
-        "width": 24,
-        "height": 24,
-        "alt": "movement speed"
-      },
-      {
-        "type": "field_number",
-        "name": "SPEED",
->>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
-        "value": 50,
-        "min": 0,
-        "max": 100
-      }
-    ],
-<<<<<<< HEAD
-    "output": "Boolean",
-    "colour": 20,
-    "tooltip": "Color sensor reflection"
-  },
-
-  // Force Sensor
-  {
-    "type": "sensor_pressure_state",
-    "message0": "Sensor %1 is %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "STATE",
-        "options": [
-          ["pressed","PRESSED"],
-          ["hard-pressed","HARD"],
-          ["released","RELEASED"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 60,
-    "tooltip": "Pressure sensor"
-  },
-
-  {
-    "type": "sensor_distance_compare",
-    "message0": "Sensor %1 distance is %2 %3 %4",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "OP",
-        "options": [
-          ["closer than","LT"],
-          ["farther than","GT"],
-          ["exactly at","EQ"]
-        ]
-      },
-      {
-        "type": "field_number",
-        "name": "VALUE",
-        "value": 10,
-        "min": 0,
-        "max": 999
-=======
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 330,
-    "tooltip": "Set Spike movement speed.",
-    "helpUrl": ""
-  },
-
-  {
-    "type": "movement_set_motors",
-    "message0": "%1 set movement motors to %2",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "assets/blocks/movement-wheel-icon.png",
-        "width": 24,
-        "height": 24,
-        "alt": "movement motors"
-      },
-      {
-        "type": "field_dropdown",
-        "name": "MOTORS",
-        "options": [
-          ["A+B", "A_B"],
-          ["A+C", "A_C"],
-          ["A+D", "A_D"],
-          ["A+E", "A_E"],
-          ["A+F", "A_F"],
-          ["B+C", "B_C"],
-          ["B+D", "B_D"],
-          ["B+E", "B_E"],
-          ["B+F", "B_F"],
-          ["C+D", "C_D"],
-          ["C+E", "C_E"],
-          ["C+F", "C_F"],
-          ["D+E", "D_E"],
-          ["D+F", "D_F"],
-          ["E+F", "E_F"]
-        ]
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 330,
-    "tooltip": "Choose which motors control Spike movement.",
-    "helpUrl": ""
-  },
-
-  {
-    "type": "movement_set_motor_rotation",
-    "message0": "%1 set 1 motor rotation to %2 %3",
-    "args0": [
-      {
-        "type": "field_image",
-        "src": "assets/blocks/movement-wheel-icon.png",
-        "width": 24,
-        "height": 24,
-        "alt": "motor rotation"
-      },
-      {
-        "type": "field_number",
-        "name": "DISTANCE",
-        "value": 17.5,
-        "min": 0
->>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
-      },
-      {
-        "type": "field_dropdown",
-        "name": "UNIT",
-        "options": [
-<<<<<<< HEAD
-          ["%","PERCENT"],
-          ["cm","CM"],
-          ["in","IN"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 60,
-    "tooltip": "Distance sensor"
-  },
-
-  // Motion Sensor
-  {
-    "type": "sensor_tilt",
-    "message0": "is tilted %1",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "DIRECTION",
-        "options": [
-          ["up","UP"],
-          ["down","DOWN"],
-          ["left","LEFT"],
-          ["right","RIGHT"],
-          ["any direction","ANY"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 100,
-    "tooltip": "Gyro sensor"
-  },
-
-  {
-    "type": "sensor_side_up",
-    "message0": "Sensor %1 side %2 is up",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "SIDE",
-        "options": [
-          ["front","FRONT"],
-          ["back","BACK"],
-          ["top","TOP"],
-          ["bottom","BOTTOM"],
-          ["right","RIGHT"],
-          ["left","LEFT"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 100,
-    "tooltip": "Orientation sensor"
-  },
-
-  {
-    "type": "sensor_motion",
-    "message0": "is %1",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "MOTION",
-        "options": [
-          ["shaken","SHAKEN"],
-          ["tapped","TAPPED"],
-          ["falling","FALLING"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 100,
-    "tooltip": "Motion sensor"
-  },
-
-  // Button Sensor
-  {
-    "type": "sensor_button",
-    "message0": "Sensor %1 button %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "STATE",
-        "options": [
-          ["pressed","PRESSED"],
-          ["released","RELEASED"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 140,
-    "tooltip": "Button sensor"
-  },
-
-  // Values
-
-  {
-    "type": "sensor_color_value",
-    "message0": "Sensor %1 color",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      }
-    ],
-    "output": "String",
-    "colour": 200,
-    "tooltip": "Color value"
-  },
-
-  {
-    "type": "sensor_reflection_value",
-    "message0": "Sensor %1 reflected light",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      }
-    ],
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Reflection value"
-  },
-
-  {
-    "type": "sensor_pressure_value",
-    "message0": "Sensor %1 pressure in %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "UNIT",
-        "options": [
-          ["%","PERCENT"],
-          ["newton","NEWTON"]
-        ]
-      }
-    ],
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Pressure value"
-  },
-
-  {
-    "type": "sensor_distance_value",
-    "message0": "Sensor %1 distance in %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "UNIT",
-        "options": [
-          ["%","PERCENT"],
-          ["cm","CM"],
-          ["in","IN"]
-        ]
-      }
-    ],
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Distance value"
-  },
-
-  {
-    "type": "sensor_angle",
-    "message0": "%1 angle",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "AXIS",
-        "options": [
-          ["pitch","PITCH"],
-          ["roll","ROLL"],
-          ["yaw","YAW"]
-        ]
-      }
-    ],
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Gyro angle"
-  },
-
-  {
-    "type": "sensor_timer",
-    "message0": "timer",
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Timer value"
-  },
-
-  // Action Blocks
-
-  {
-    "type": "sensor_set_yaw_zero",
-    "message0": "set yaw angle to 0",
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 260,
-    "tooltip": "Reset yaw"
-  },
-
-  {
-    "type": "sensor_reset_timer",
-    "message0": "reset timer",
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 260,
-    "tooltip": "Reset timer"
   }
 
-=======
-          ["cm", "CM"],
-          ["inches", "INCHES"]
-        ]
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 330,
-    "tooltip": "Set how far Spike moves for one motor rotation.",
-    "helpUrl": ""
-  }
->>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
+
 ];
 
 // CUSTOM_BLOCK_DEFINITIONS
