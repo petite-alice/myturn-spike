@@ -113,50 +113,17 @@ const LEGO_SPIKE_TOOLBOX = [
     "name":"Does Spike make sound",
     "categorystyle":"math_category",
     "contents": [
-      {
-        "kind": "block",
-        "type": "sound_play_until_done"
-      },
-      {
-        "kind": "block",
-        "type": "sound_start"
-      },
-      {
-        "kind": "block",
-        "type": "sound_play_beep"
-      },
-      {
-        "kind": "block",
-        "type": "sound_start_beep"
-      },
-      {
-        "kind": "block",
-        "type": "sound_stop_all"
-      },
-      {
-        "kind": "block",
-        "type": "sound_change_effect"
-      },
-      {
-        "kind": "block",
-        "type": "sound_set_effect"
-      },
-      {
-        "kind": "block",
-        "type": "sound_clear_effects"
-      },
-      {
-        "kind": "block",
-        "type": "sound_change_volume"
-      },
-      {
-        "kind": "block",
-        "type": "sound_set_volume"
-      },
-      {
-        "kind": "block",
-        "type": "sound_volume"
-      }
+      {"kind":"block","type":"sound_play_until_done"},
+      {"kind":"block","type":"sound_start"},
+      {"kind":"block","type":"sound_play_beep"},
+      {"kind":"block","type":"sound_start_beep"},
+      {"kind":"block","type":"sound_stop_all"},
+      {"kind":"block","type":"sound_change_effect"},
+      {"kind":"block","type":"sound_set_effect"},
+      {"kind":"block","type":"sound_clear_effects"},
+      {"kind":"block","type":"sound_change_volume"},
+      {"kind":"block","type":"sound_set_volume"},
+      {"kind":"block","type":"sound_volume"}
     ]
   },
   {
@@ -171,14 +138,42 @@ const LEGO_SPIKE_TOOLBOX = [
     ]
   },
   {
-    "kind":"category",
-    "name":"Does Spike rotate or move?",
-    "categorystyle":"math_category",
-    "contents":[
-      { 
-        "kind":"block",
-        "type":"controls_if"
+    "kind": "category",
+    "name": "Does Spike rotate or move?",
+    "categorystyle": "math_category",
+    "contents": [
+      {
+        "kind": "block",
+        "type": "movement_move_for"
       },
+      {
+        "kind": "block",
+        "type": "movement_start_moving"
+      },
+      {
+        "kind": "block",
+        "type": "movement_move_steering_for"
+      },
+      {
+        "kind": "block",
+        "type": "movement_start_moving_steering"
+      },
+      {
+        "kind": "block",
+        "type": "movement_stop_moving"
+      },
+      {
+        "kind": "block",
+        "type": "movement_set_speed"
+      },
+      {
+        "kind": "block",
+        "type": "movement_set_motors"
+      },
+      {
+        "kind": "block",
+        "type": "movement_set_motor_rotation"
+      }
     ]
   },
   {
@@ -186,10 +181,22 @@ const LEGO_SPIKE_TOOLBOX = [
     "name":"Does Spike use one of its sensors?",
     "categorystyle":"math_category",
     "contents":[
-      { 
-        "kind":"block",
-        "type":"controls_if"
-      },
+      {"kind":"block","type":"sensor_is_color"},
+      {"kind":"block","type":"sensor_reflection_compare"},
+      {"kind":"block","type":"sensor_pressure_state"},
+      {"kind":"block","type":"sensor_distance_compare"},
+      {"kind":"block","type":"sensor_tilt"},
+      {"kind":"block","type":"sensor_side_up"},
+      {"kind":"block","type":"sensor_motion"},
+      {"kind":"block","type":"sensor_button"},
+      {"kind":"block","type":"sensor_color_value"},
+      {"kind":"block","type":"sensor_reflection_value"},
+      {"kind":"block","type":"sensor_pressure_value"},
+      {"kind":"block","type":"sensor_distance_value"},
+      {"kind":"block","type":"sensor_angle"},
+      {"kind":"block","type":"sensor_timer"},
+      {"kind":"block","type":"sensor_set_yaw_zero"},
+      {"kind":"block","type":"sensor_reset_timer"}
     ]
   },
   {
@@ -1244,59 +1251,8 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "message0": "volume",
     "output": "Number",
     "colour": 290
-<<<<<<< HEAD
-  }
-
-
-=======
   },
 
-<<<<<<< HEAD
-  // Does spike use one of it's sensors?
-
-  // Color Sensor
-  {
-    "type": "sensor_is_color",
-    "message0": "Sensor %1 color is %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "COLOR",
-        "options": [
-          ["red","RED"],["orange","ORANGE"],["yellow","YELLOW"],
-          ["green","GREEN"],["blue","BLUE"],["purple","PURPLE"],
-          ["black","BLACK"],["white","WHITE"],["pink","PINK"],["brown","BROWN"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 20,
-    "tooltip": "Color sensor"
-  },
-
-  {
-    "type": "sensor_reflection_compare",
-    "message0": "Sensor %1 reflection %2 %3 %",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "OP",
-        "options": [["<","LT"],["=","EQ"],[">","GT"]]
-      },
-      {
-        "type": "field_number",
-        "name": "VALUE",
-=======
   // Does Spike rotate or move?
   {
     "type": "movement_move_for",
@@ -1470,68 +1426,11 @@ const CUSTOM_BLOCK_DEFINITIONS = [
       {
         "type": "field_number",
         "name": "SPEED",
->>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
         "value": 50,
         "min": 0,
         "max": 100
       }
     ],
-<<<<<<< HEAD
-    "output": "Boolean",
-    "colour": 20,
-    "tooltip": "Color sensor reflection"
-  },
-
-  // Force Sensor
-  {
-    "type": "sensor_pressure_state",
-    "message0": "Sensor %1 is %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "STATE",
-        "options": [
-          ["pressed","PRESSED"],
-          ["hard-pressed","HARD"],
-          ["released","RELEASED"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 60,
-    "tooltip": "Pressure sensor"
-  },
-
-  {
-    "type": "sensor_distance_compare",
-    "message0": "Sensor %1 distance is %2 %3 %4",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "OP",
-        "options": [
-          ["closer than","LT"],
-          ["farther than","GT"],
-          ["exactly at","EQ"]
-        ]
-      },
-      {
-        "type": "field_number",
-        "name": "VALUE",
-        "value": 10,
-        "min": 0,
-        "max": 999
-=======
     "previousStatement": null,
     "nextStatement": null,
     "colour": 330,
@@ -1595,243 +1494,11 @@ const CUSTOM_BLOCK_DEFINITIONS = [
         "name": "DISTANCE",
         "value": 17.5,
         "min": 0
->>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
       },
       {
         "type": "field_dropdown",
         "name": "UNIT",
         "options": [
-<<<<<<< HEAD
-          ["%","PERCENT"],
-          ["cm","CM"],
-          ["in","IN"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 60,
-    "tooltip": "Distance sensor"
-  },
-
-  // Motion Sensor
-  {
-    "type": "sensor_tilt",
-    "message0": "is tilted %1",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "DIRECTION",
-        "options": [
-          ["up","UP"],
-          ["down","DOWN"],
-          ["left","LEFT"],
-          ["right","RIGHT"],
-          ["any direction","ANY"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 100,
-    "tooltip": "Gyro sensor"
-  },
-
-  {
-    "type": "sensor_side_up",
-    "message0": "Sensor %1 side %2 is up",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "SIDE",
-        "options": [
-          ["front","FRONT"],
-          ["back","BACK"],
-          ["top","TOP"],
-          ["bottom","BOTTOM"],
-          ["right","RIGHT"],
-          ["left","LEFT"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 100,
-    "tooltip": "Orientation sensor"
-  },
-
-  {
-    "type": "sensor_motion",
-    "message0": "is %1",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "MOTION",
-        "options": [
-          ["shaken","SHAKEN"],
-          ["tapped","TAPPED"],
-          ["falling","FALLING"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 100,
-    "tooltip": "Motion sensor"
-  },
-
-  // Button Sensor
-  {
-    "type": "sensor_button",
-    "message0": "Sensor %1 button %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "STATE",
-        "options": [
-          ["pressed","PRESSED"],
-          ["released","RELEASED"]
-        ]
-      }
-    ],
-    "output": "Boolean",
-    "colour": 140,
-    "tooltip": "Button sensor"
-  },
-
-  // Values
-
-  {
-    "type": "sensor_color_value",
-    "message0": "Sensor %1 color",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      }
-    ],
-    "output": "String",
-    "colour": 200,
-    "tooltip": "Color value"
-  },
-
-  {
-    "type": "sensor_reflection_value",
-    "message0": "Sensor %1 reflected light",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      }
-    ],
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Reflection value"
-  },
-
-  {
-    "type": "sensor_pressure_value",
-    "message0": "Sensor %1 pressure in %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "UNIT",
-        "options": [
-          ["%","PERCENT"],
-          ["newton","NEWTON"]
-        ]
-      }
-    ],
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Pressure value"
-  },
-
-  {
-    "type": "sensor_distance_value",
-    "message0": "Sensor %1 distance in %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "PORT",
-        "options": [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "UNIT",
-        "options": [
-          ["%","PERCENT"],
-          ["cm","CM"],
-          ["in","IN"]
-        ]
-      }
-    ],
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Distance value"
-  },
-
-  {
-    "type": "sensor_angle",
-    "message0": "%1 angle",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "AXIS",
-        "options": [
-          ["pitch","PITCH"],
-          ["roll","ROLL"],
-          ["yaw","YAW"]
-        ]
-      }
-    ],
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Gyro angle"
-  },
-
-  {
-    "type": "sensor_timer",
-    "message0": "timer",
-    "output": "Number",
-    "colour": 200,
-    "tooltip": "Timer value"
-  },
-
-  // Action Blocks
-
-  {
-    "type": "sensor_set_yaw_zero",
-    "message0": "set yaw angle to 0",
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 260,
-    "tooltip": "Reset yaw"
-  },
-
-  {
-    "type": "sensor_reset_timer",
-    "message0": "reset timer",
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 260,
-    "tooltip": "Reset timer"
-  }
-
-=======
           ["cm", "CM"],
           ["inches", "INCHES"]
         ]
@@ -2180,8 +1847,6 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "colour": 260,
     "tooltip": "Reset timer"
   }
->>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
->>>>>>> 3840634951634cd9b6ab874d3ef3d5137b1cdc44
 ];
 
 // CUSTOM_BLOCK_DEFINITIONS
