@@ -1318,7 +1318,6 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "tooltip": "Move Spike forward or backward for a set amount.",
     "helpUrl": ""
   },
-
   {
     "type": "movement_start_moving",
     "message0": "%1 start moving %2",
