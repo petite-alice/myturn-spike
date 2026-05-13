@@ -138,14 +138,42 @@ const LEGO_SPIKE_TOOLBOX = [
     ]
   },
   {
-    "kind":"category",
-    "name":"Does Spike rotate or move?",
-    "categorystyle":"math_category",
-    "contents":[
-      { 
-        "kind":"block",
-        "type":"controls_if"
+    "kind": "category",
+    "name": "Does Spike rotate or move?",
+    "categorystyle": "math_category",
+    "contents": [
+      {
+        "kind": "block",
+        "type": "movement_move_for"
       },
+      {
+        "kind": "block",
+        "type": "movement_start_moving"
+      },
+      {
+        "kind": "block",
+        "type": "movement_move_steering_for"
+      },
+      {
+        "kind": "block",
+        "type": "movement_start_moving_steering"
+      },
+      {
+        "kind": "block",
+        "type": "movement_stop_moving"
+      },
+      {
+        "kind": "block",
+        "type": "movement_set_speed"
+      },
+      {
+        "kind": "block",
+        "type": "movement_set_motors"
+      },
+      {
+        "kind": "block",
+        "type": "movement_set_motor_rotation"
+      }
     ]
   },
   {
@@ -1225,6 +1253,7 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "colour": 290
   },
 
+<<<<<<< HEAD
   // Does spike use one of it's sensors?
 
   // Color Sensor
@@ -1269,11 +1298,188 @@ const CUSTOM_BLOCK_DEFINITIONS = [
       {
         "type": "field_number",
         "name": "VALUE",
+=======
+  // Does Spike rotate or move?
+  {
+    "type": "movement_move_for",
+    "message0": "%1 move %2 for %3 %4",
+    "args0": [
+      {
+        "type": "field_image",
+        "src": "assets/blocks/movement-wheel-icon.png",
+        "width": 24,
+        "height": 24,
+        "alt": "move"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "DIRECTION",
+        "options": [
+          ["forward", "FORWARD"],
+          ["backward", "BACKWARD"]
+        ]
+      },
+      {
+        "type": "field_number",
+        "name": "AMOUNT",
+        "value": 10,
+        "min": 0
+      },
+      {
+        "type": "field_dropdown",
+        "name": "UNIT",
+        "options": [
+          ["rotations", "ROTATIONS"],
+          ["degrees", "DEGREES"],
+          ["seconds", "SECONDS"],
+          ["cm", "CM"],
+          ["inches", "INCHES"]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Move Spike forward or backward for a set amount.",
+    "helpUrl": ""
+  },
+
+  {
+    "type": "movement_start_moving",
+    "message0": "%1 start moving %2",
+    "args0": [
+      {
+        "type": "field_image",
+        "src": "assets/blocks/movement-wheel-icon.png",
+        "width": 24,
+        "height": 24,
+        "alt": "start moving"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "DIRECTION",
+        "options": [
+          ["forward", "FORWARD"],
+          ["backward", "BACKWARD"]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Start moving Spike forward or backward.",
+    "helpUrl": ""
+  },
+
+  {
+    "type": "movement_move_steering_for",
+    "message0": "%1 move steering %2 for %3 %4",
+    "args0": [
+      {
+        "type": "field_image",
+        "src": "assets/blocks/movement-wheel-icon.png",
+        "width": 24,
+        "height": 24,
+        "alt": "move steering"
+      },
+      {
+        "type": "field_number",
+        "name": "STEERING",
+        "value": 30,
+        "min": -100,
+        "max": 100
+      },
+      {
+        "type": "field_number",
+        "name": "AMOUNT",
+        "value": 10,
+        "min": 0
+      },
+      {
+        "type": "field_dropdown",
+        "name": "UNIT",
+        "options": [
+          ["rotations", "ROTATIONS"],
+          ["degrees", "DEGREES"],
+          ["seconds", "SECONDS"],
+          ["cm", "CM"],
+          ["inches", "INCHES"]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Move Spike with steering for a set amount.",
+    "helpUrl": ""
+  },
+
+  {
+    "type": "movement_start_moving_steering",
+    "message0": "%1 start moving steering %2",
+    "args0": [
+      {
+        "type": "field_image",
+        "src": "assets/blocks/movement-wheel-icon.png",
+        "width": 24,
+        "height": 24,
+        "alt": "start moving steering"
+      },
+      {
+        "type": "field_number",
+        "name": "STEERING",
+        "value": 30,
+        "min": -100,
+        "max": 100
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Start moving Spike with steering.",
+    "helpUrl": ""
+  },
+
+  {
+    "type": "movement_stop_moving",
+    "message0": "%1 stop moving",
+    "args0": [
+      {
+        "type": "field_image",
+        "src": "assets/blocks/movement-wheel-icon.png",
+        "width": 24,
+        "height": 24,
+        "alt": "stop moving"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Stop Spike movement.",
+    "helpUrl": ""
+  },
+
+  {
+    "type": "movement_set_speed",
+    "message0": "%1 set movement speed to %2 %",
+    "args0": [
+      {
+        "type": "field_image",
+        "src": "assets/blocks/movement-wheel-icon.png",
+        "width": 24,
+        "height": 24,
+        "alt": "movement speed"
+      },
+      {
+        "type": "field_number",
+        "name": "SPEED",
+>>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
         "value": 50,
         "min": 0,
         "max": 100
       }
     ],
+<<<<<<< HEAD
     "output": "Boolean",
     "colour": 20,
     "tooltip": "Color sensor reflection"
@@ -1328,11 +1534,77 @@ const CUSTOM_BLOCK_DEFINITIONS = [
         "value": 10,
         "min": 0,
         "max": 999
+=======
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Set Spike movement speed.",
+    "helpUrl": ""
+  },
+
+  {
+    "type": "movement_set_motors",
+    "message0": "%1 set movement motors to %2",
+    "args0": [
+      {
+        "type": "field_image",
+        "src": "assets/blocks/movement-wheel-icon.png",
+        "width": 24,
+        "height": 24,
+        "alt": "movement motors"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "MOTORS",
+        "options": [
+          ["A+B", "A_B"],
+          ["A+C", "A_C"],
+          ["A+D", "A_D"],
+          ["A+E", "A_E"],
+          ["A+F", "A_F"],
+          ["B+C", "B_C"],
+          ["B+D", "B_D"],
+          ["B+E", "B_E"],
+          ["B+F", "B_F"],
+          ["C+D", "C_D"],
+          ["C+E", "C_E"],
+          ["C+F", "C_F"],
+          ["D+E", "D_E"],
+          ["D+F", "D_F"],
+          ["E+F", "E_F"]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Choose which motors control Spike movement.",
+    "helpUrl": ""
+  },
+
+  {
+    "type": "movement_set_motor_rotation",
+    "message0": "%1 set 1 motor rotation to %2 %3",
+    "args0": [
+      {
+        "type": "field_image",
+        "src": "assets/blocks/movement-wheel-icon.png",
+        "width": 24,
+        "height": 24,
+        "alt": "motor rotation"
+      },
+      {
+        "type": "field_number",
+        "name": "DISTANCE",
+        "value": 17.5,
+        "min": 0
+>>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
       },
       {
         "type": "field_dropdown",
         "name": "UNIT",
         "options": [
+<<<<<<< HEAD
           ["%","PERCENT"],
           ["cm","CM"],
           ["in","IN"]
@@ -1562,6 +1834,19 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "tooltip": "Reset timer"
   }
 
+=======
+          ["cm", "CM"],
+          ["inches", "INCHES"]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Set how far Spike moves for one motor rotation.",
+    "helpUrl": ""
+  }
+>>>>>>> a4a3a29c5b52cb24a4ac1cc1ea58232d67caeba0
 ];
 
 // CUSTOM_BLOCK_DEFINITIONS
