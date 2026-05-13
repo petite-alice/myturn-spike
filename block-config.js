@@ -112,11 +112,51 @@ const LEGO_SPIKE_TOOLBOX = [
     "kind":"category",
     "name":"Does Spike make sound",
     "categorystyle":"math_category",
-    "contents":[
-      { 
-        "kind":"block",
-        "type":"controls_if"
+    "contents": [
+      {
+        "kind": "block",
+        "type": "sound_play_until_done"
       },
+      {
+        "kind": "block",
+        "type": "sound_start"
+      },
+      {
+        "kind": "block",
+        "type": "sound_play_beep"
+      },
+      {
+        "kind": "block",
+        "type": "sound_start_beep"
+      },
+      {
+        "kind": "block",
+        "type": "sound_stop_all"
+      },
+      {
+        "kind": "block",
+        "type": "sound_change_effect"
+      },
+      {
+        "kind": "block",
+        "type": "sound_set_effect"
+      },
+      {
+        "kind": "block",
+        "type": "sound_clear_effects"
+      },
+      {
+        "kind": "block",
+        "type": "sound_change_volume"
+      },
+      {
+        "kind": "block",
+        "type": "sound_set_volume"
+      },
+      {
+        "kind": "block",
+        "type": "sound_volume"
+      }
     ]
   },
   {
@@ -258,6 +298,9 @@ const BASE_BLOCKLY_TOOLBOX = {
       "name":"Delete Later - If/Else",
       "categorystyle":"logic_category",
       "contents":[
+
+        
+
         {
           "kind":"block",
           "type":"controls_if"
@@ -1013,65 +1056,201 @@ const CUSTOM_BLOCK_DEFINITIONS = [
     "helpUrl": ""
   },
 
-  // Spike example block
+  // Does Spike make a sound?
   {
-    "type": "spike_run_motor",
-    "message0": "Motor %1 run %2 for %3 %4",
+    "type": "sound_play_until_done",
+    "message0": "play sound %1 until done",
     "args0": [
       {
         "type": "field_dropdown",
-        "name": "MOTOR",
+        "name": "SOUND",
         "options": [
-          ["A", "A"],
-          ["B", "B"],
-          ["C", "C"],
-          ["D", "D"],
-          ["E", "E"],
-          ["F", "F"]
-        ]
-      },
-      {
-        "type": "field_dropdown",
-        "name": "DIRECTION",
-        "options": [
-          ["clockwise", "CLOCKWISE"],
-          ["counter-clockwise", "COUNTERCLOCKWISE"]
-        ]
-      },
-      {
-        "type": "field_number",
-        "name": "AMOUNT",
-        "value": 1,
-        "min": 0,
-        "max": 999
-      },
-      {
-        "type": "field_dropdown",
-        "name": "UNIT",
-        "options": [
-          ["rotations", "ROTATIONS"],
-          ["degrees", "DEGREES"],
-          ["seconds", "SECONDS"]
+          ["Cat Meow 1", "CAT_MEOW_1"],
+          ["Add sound...", "ADD_SOUND"],
+          ["Record...", "RECORD"],
+          ["Edit sounds...", "EDIT_SOUNDS"]
         ]
       }
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 180,
-    "tooltip": "Run a LEGO Spike motor",
-    "helpUrl": ""
+    "colour": 290
+  },
+
+  {
+    "type": "sound_start",
+    "message0": "start sound %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "SOUND",
+        "options": [
+          ["Cat Meow 1", "CAT_MEOW_1"],
+          ["Add sound...", "ADD_SOUND"],
+          ["Record...", "RECORD"],
+          ["Edit sounds...", "EDIT_SOUNDS"]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_play_beep",
+    "message0": "play beep %1 for %2 seconds",
+    "args0": [
+      {
+        "type": "field_number",
+        "name": "NOTE",
+        "value": 60,
+        "min": 48,
+        "max": 108
+      },
+      {
+        "type": "field_number",
+        "name": "SECONDS",
+        "value": 1,
+        "min": 0,
+        "max": 999,
+        "precision": 0.1
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_start_beep",
+    "message0": "start playing beep %1",
+    "args0": [
+      {
+        "type": "field_number",
+        "name": "NOTE",
+        "value": 60,
+        "min": 48,
+        "max": 108
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_stop_all",
+    "message0": "stop all sounds",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_change_effect",
+    "message0": "change %1 effect by %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "EFFECT",
+        "options": [
+          ["pitch", "PITCH"],
+          ["pan left/right", "PAN"]
+        ]
+      },
+      {
+        "type": "field_number",
+        "name": "VALUE",
+        "value": 10,
+        "min": 0,
+        "max": 999
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_set_effect",
+    "message0": "set %1 effect to %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "EFFECT",
+        "options": [
+          ["pitch", "PITCH"],
+          ["pan left/right", "PAN"]
+        ]
+      },
+      {
+        "type": "field_number",
+        "name": "VALUE",
+        "value": 100,
+        "min": 0,
+        "max": 999
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_clear_effects",
+    "message0": "clear sound effects",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_change_volume",
+    "message0": "change volume by %1",
+    "args0": [
+      {
+        "type": "field_number",
+        "name": "VOLUME",
+        "value": 10,
+        "min": -100,
+        "max": 100
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_set_volume",
+    "message0": "set volume to %1 %",
+    "args0": [
+      {
+        "type": "field_number",
+        "name": "VOLUME",
+        "value": 100,
+        "min": 0,
+        "max": 100
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290
+  },
+
+  {
+    "type": "sound_volume",
+    "message0": "volume",
+    "output": "Number",
+    "colour": 290
   }
-];
-
-// Tool box 
-const LEGO_SPIKE_DEFINITIONS = [
-
-
-
-
 
 
 ];
+
+// CUSTOM_BLOCK_DEFINITIONS
+
 
 //
 // Categories from the original application. 
